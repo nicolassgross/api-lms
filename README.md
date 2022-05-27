@@ -20,6 +20,3 @@ O projeto consiste em um CRUD de usuários com a tabela da Unimestre, onde ele v
 ## Objetivo
 
 A finalidade deste projeto é ver se o laravel pode ser uma boa alternativa de tecnologia para construção de API's para a Unimestre.
-Laravel Installation - jwt-auth 
-
-GitHub - krlove/eloquent-model-generator: Eloquent Model Generator 
