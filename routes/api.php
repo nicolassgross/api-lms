@@ -34,6 +34,7 @@ Route::group([
 ], function () {
     
     Route::get('profile/{cd_pessoa}', [AuthController::class, 'userProfile']);
+    Route::post('course/new', [CoursesController::class, 'insertImageCourse']);
     Route::get('all-courses', [CoursesController::class, 'list']);
     Route::get('course', [CoursesController::class, 'showById']);
 });
