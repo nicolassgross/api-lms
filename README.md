@@ -14,8 +14,8 @@ O projeto consiste em um CRUD de usuários com a tabela da Unimestre, onde ele v
 - "/api/auth/register" POST - Cria novo usuário no banco de dados com senha criptografada (necessita os parâmetros "cd_cliente", "ds_nome", "ds_login", "ds_senha").
 
 ## Pacotes externos
-[JWT AUTH](https://jwt-auth.readthedocs.io/en/develop/laravel-installation/);
-[Model Generator](https://github.com/krlove/eloquent-model-generator).
+- [JWT AUTH](https://jwt-auth.readthedocs.io/en/develop/laravel-installation/);
+- [Model Generator](https://github.com/krlove/eloquent-model-generator).
 
 ## Objetivo
 
