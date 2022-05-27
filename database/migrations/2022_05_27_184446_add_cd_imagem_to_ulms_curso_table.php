@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUlmsCursoTable extends Migration
+class AddCdImagemToUlmsCursoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateUlmsCursoTable extends Migration
      */
     public function up()
     {
-        Schema::create('ulms_curso', function (Blueprint $table) {
-            $table->id('cd_curso');
-            $table->string('cd_professor');
-            $table->string('ds_nome')->unique();
-            $table->string('me_ementa');
-            $table->string('me_resumo');
+        Schema::table('ulms_curso', function (Blueprint $table) {
+            $table->string('cd_imagem');
         });
     }
 
@@ -29,6 +25,8 @@ class CreateUlmsCursoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ulms_curso');
+        Schema::table('ulms_curso', function (Blueprint $table) {
+            //
+        });
     }
 }
