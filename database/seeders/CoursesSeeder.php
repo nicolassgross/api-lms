@@ -13,10 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $faker = \Faker\Factory::create();
-        $faker->seed(1234);
-        $factory = \Illuminate\Database\Eloquent\Factory::construct($faker);
-        
-        return $factory->of(\App\Models\Courses::class)->create(10);    
+        \App\Models\Courses::factory(10)->create();
     }
 }
