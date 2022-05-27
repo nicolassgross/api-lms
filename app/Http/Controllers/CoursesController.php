@@ -29,16 +29,7 @@ class CoursesController extends Controller
 
     public function insertImageCourse (Request $request)
     {
-        $curso = $request->input('cd_curso');
-        $ds_senha = $request->input('cd_professor');
-        $ds_senha = $request->input('ds_nome');
-        $ds_senha = $request->input('me_ementa');
-        $ds_senha = $request->input('me_resumo');
-        $ds_senha = $request->input('cd_imagem');
-
-
         $validator = Validator::make($request->all(), [
-            'cd_curso' => 'required|string',
             'cd_professor' => 'required|string',
             'ds_nome' => 'required|string',
             'me_ementa' => 'required|string',
@@ -52,14 +43,14 @@ class CoursesController extends Controller
             ), 400);
         }
 
-        $user = Courses::create(array_merge(
+        $curso = Courses::create(array_merge(
             $validator->validated(),
         ));
 
         return response()->json([
             'status' => true,
-            'message' => 'Usuário registrado com sucesso',
-            'user' => $user
+            'message' => 'Curso cadastrado com sucesso',
+            'user' => $curso
         ], 201);
     }
 }
