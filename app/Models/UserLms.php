@@ -23,6 +23,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * @property string $dt_cadastro
  * @property string $dt_base
  * @property string $ds_login_md5
+ * @property string $perfil
  */
 class UserLms extends Authenticatable implements JWTSubject
 {
@@ -46,7 +47,7 @@ class UserLms extends Authenticatable implements JWTSubject
     /**
      * @var array
      */
-    protected $fillable = ['cd_cliente', 'cd_imagem', 'ds_nome', 'ds_login', 'ds_senha', 'sn_pessoa_juridica', 'me_qualificacao', 'ds_seguimento', 'ds_marca', 'ds_unidade', 'ds_turma', 'dt_cadastro', 'dt_base', 'ds_login_md5'];
+    protected $fillable = ['cd_cliente', 'cd_imagem', 'ds_nome', 'perfil', 'ds_login', 'ds_senha', 'sn_pessoa_juridica', 'me_qualificacao', 'ds_seguimento', 'ds_marca', 'ds_unidade', 'ds_turma', 'dt_cadastro', 'dt_base', 'ds_login_md5'];
 
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
