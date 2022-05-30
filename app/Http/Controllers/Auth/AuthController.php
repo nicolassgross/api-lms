@@ -38,11 +38,14 @@ class AuthController extends Controller
 
         if ($user == null) {
             return response()->json([
+                "error" => 
+                [
                 "success" => false,
                 "status" => 401,
                 "message" => 'Credenciais inválidas!',
-                "data" => '', 
-                ], 401); 
+                "data" => ''
+                ]
+            ]); 
         }
         
         $auth = Hash::check($ds_senha, $user->ds_senha);
@@ -51,11 +54,14 @@ class AuthController extends Controller
         
         if($ok == false && $auth == false) {
             return response()->json([
+                "error" => 
+                [
                 "success" => false,
                 "status" => 401,
                 "message" => 'Credenciais inválidas!',
-                "data" => '', 
-                ], 401); 
+                "data" => ''
+                ]
+            ]); 
         }
         
         return response()->json([
@@ -89,8 +95,11 @@ class AuthController extends Controller
 
         if ($validator->fails()) {
             return response()->json(array(
+                "success" => true,
+                "status" => 400,
+                "message" => 'Usuário registrado com sucesso',
                 "error" => 'Faltou algum campo'
-            ), 400);
+            ));
         }
 
         $user = UserLms::create(array_merge(
@@ -99,10 +108,10 @@ class AuthController extends Controller
         ));
 
         return response()->json([
-            'status' => true,
-            'message' => 'Usuário registrado com sucesso',
-            'user' => $user
-        ], 201);
+            "success" => true,
+            "status" => 201,
+            "message" => 'Usuário registrado com sucesso',
+        ]);
     }
 
     /**
@@ -114,7 +123,10 @@ class AuthController extends Controller
     {
         auth()->logout();
 
-        return response()->json(['message' => 'Usuário deslogado com sucesso']);
+        return response()->json([
+            'status' => true,
+            'message' => '',
+            'message' => 'Usuário deslogado com sucesso']);
     }
 
     /**
