@@ -40,7 +40,7 @@ class AuthController extends Controller
             return response()->json([
                 "success" => false,
                 "status" => 401,
-                "message" => 'Credenciais inválidas',
+                "message" => 'Credenciais inválidas!',
                 "data" => '', 
                 ], 401); 
         }
@@ -53,7 +53,7 @@ class AuthController extends Controller
             return response()->json([
                 "success" => false,
                 "status" => 401,
-                "message" => 'Credenciais inválidas',
+                "message" => 'Credenciais inválidas!',
                 "data" => '', 
                 ], 401); 
         }
@@ -61,6 +61,7 @@ class AuthController extends Controller
         return response()->json([
             "success" => true,
             "status" => 200,
+            "message" => 'Autenticado com sucesso!',
             "data" => 
                 [
                     'access_token' => $token,
