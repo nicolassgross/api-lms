@@ -38,12 +38,11 @@ class AuthController extends Controller
 
         if ($user == null) {
             return response()->json([
+                "success" => false,
                 "error" => 
                 [
-                "success" => false,
                 "status" => 401,
                 "message" => 'Credenciais inválidas!',
-                "data" => ''
                 ]
             ]); 
         }
@@ -54,12 +53,11 @@ class AuthController extends Controller
         
         if($ok == false && $auth == false) {
             return response()->json([
+                "success" => false,
                 "error" => 
                 [
-                "success" => false,
                 "status" => 401,
                 "message" => 'Credenciais inválidas!',
-                "data" => ''
                 ]
             ]); 
         }
