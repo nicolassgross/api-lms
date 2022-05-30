@@ -38,9 +38,10 @@ class CoursesController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(array(
-                "error" => 'Faltou algum campo'
-            ), 400);
+            return response()->json([
+                "success" => false,
+                "message" => 'Dados inválidos!',
+            ], 400);
         }
 
         $curso = Courses::create(array_merge(
@@ -48,7 +49,7 @@ class CoursesController extends Controller
         ));
 
         return response()->json([
-            'status' => true,
+            'success' => true,
             'message' => 'Curso cadastrado com sucesso',
             'user' => $curso
         ], 201);

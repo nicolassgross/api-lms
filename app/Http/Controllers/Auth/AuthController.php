@@ -64,7 +64,7 @@ class AuthController extends Controller
                     'expires_in' => auth()->factory()->getTTL() * 60,
                     'user' => $user
                 ] 
-        ]);
+        ], 200);
     }
 
     /**
@@ -80,14 +80,13 @@ class AuthController extends Controller
             'ds_nome' => 'required|string',
             'ds_login' => 'required|string',
             'ds_senha' => 'required|string',
+            'perfil' => 'required|integer',
         ]);
 
         if ($validator->fails()) {
             return response()->json(array(
                 "success" => true,
-                "status" => 400,
-                "message" => 'Usuário registrado com sucesso',
-                "error" => 'Faltou algum campo'
+                "message" => 'Preencha todos os campos',
             ));
         }
 
@@ -98,9 +97,8 @@ class AuthController extends Controller
 
         return response()->json([
             "success" => true,
-            "status" => 201,
-            "message" => 'Usuário registrado com sucesso',
-        ]);
+            "message" => 'Usuário registrado com sucesso!',
+        ], 201);
     }
 
     /**
@@ -113,8 +111,7 @@ class AuthController extends Controller
         auth()->logout();
 
         return response()->json([
-            'status' => true,
-            'message' => '',
+            'success' => true,
             'message' => 'Usuário deslogado com sucesso']);
     }
 
