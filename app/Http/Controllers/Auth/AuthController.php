@@ -36,22 +36,38 @@ class AuthController extends Controller
             ['ds_login', '=', $ds_login],
         ])->first();
 
+        if ($user == null) {
+            return response()->json([
+                "success" => false,
+                "status" => 401,
+                "message" => 'Credenciais inválidas',
+                "data" => '', 
+                ], 401); 
+        }
+        
         $auth = Hash::check($ds_senha, $user->ds_senha);
         $ok = password_verify($ds_senha, $user->ds_senha);
+        $token = JWTAuth::fromUser($user);
         
         if($ok == false && $auth == false) {
-            echo 'SENHA INCORRETA';die; 
+            return response()->json([
+                "success" => false,
+                "status" => 401,
+                "message" => 'Credenciais inválidas',
+                "data" => '', 
+                ], 401); 
         }
-
-        if (! $token = JWTAuth::fromUser($user)) {
-            return response()->json(['error' => 'invalid_credentials'], 401);
-        } 
-
+        
         return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60,
-            'user' => $user
+            "success" => true,
+            "status" => 200,
+            "data" => 
+                [
+                    'access_token' => $token,
+                    'token_type' => 'bearer',
+                    'expires_in' => auth()->factory()->getTTL() * 60,
+                    'user' => $user
+                ] 
         ]);
     }
 
