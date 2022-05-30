@@ -40,7 +40,7 @@ class AuthController extends Controller
             return response()->json([
                 "success" => false,
                 "message" => 'Credenciais inválidas!',
-            ]); 
+            ], 401); 
         }
         
         $auth = Hash::check($ds_senha, $user->ds_senha);
@@ -51,7 +51,7 @@ class AuthController extends Controller
             return response()->json([
                 "success" => false,
                 "message" => 'Credenciais inválidas!',
-            ]);  
+            ], 401);  
         }
         
         return response()->json([
