@@ -18,6 +18,8 @@ class Courses extends Model
 {
     use Filterable;
 
+    // protected $connection = 'mysql2';
+
     protected $filters = ['cd_curso', 'cd_professor'];
 
     public $timestamps = false;
