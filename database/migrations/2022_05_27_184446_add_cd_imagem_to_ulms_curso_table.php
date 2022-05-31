@@ -14,7 +14,7 @@ class AddCdImagemToUlmsCursoTable extends Migration
     public function up()
     {
         Schema::table('ulms_curso', function (Blueprint $table) {
-            $table->string('cd_imagem');
+            $table->string('imagem');
         });
     }
 

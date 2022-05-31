@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUlmsCursoTable extends Migration
+class CreateApiCursoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateUlmsCursoTable extends Migration
      */
     public function up()
     {
-        Schema::create('ulms_curso', function (Blueprint $table) {
+        Schema::create('api_curso', function (Blueprint $table) {
             $table->id('cd_curso');
             $table->string('cd_professor');
             $table->string('ds_nome')->unique();
             $table->string('me_ementa');
             $table->string('me_resumo');
+            $table->string('imagem');
         });
     }
 

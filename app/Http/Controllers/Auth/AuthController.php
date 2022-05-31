@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\UserLms;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
@@ -132,11 +133,27 @@ class AuthController extends Controller
      */
     public function userProfile(Request $request)
     {
+        
         $pessoa = $request->route('cd_pessoa');;
 
         $response = UserLms::where('cd_pessoa', $pessoa)->first();
         
         return response()->json(['data'=>$response],200);
+    }
+
+    public function getUsers(Request $request)
+    {
+        try {
+            $user = JWTAuth::parseToken()->authenticate();
+
+            if (!$user) {
+                return $this->sendError([], "user not found", 403);
+            } 
+        } catch (JWTException $e) {
+            return $this->sendError([], $e->getMessage(), 500);
+        }
+
+        return $this->sendResponse($user, "user data retrieved", 200);
     }
 
     protected function createNewToken($token){

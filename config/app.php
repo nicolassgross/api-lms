@@ -177,6 +177,7 @@ return [
 
         Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        EloquentFilter\ServiceProvider::class,
 
     ],
 

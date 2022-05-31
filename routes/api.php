@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\CourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +20,6 @@ use App\Http\Controllers\CoursesController;
 //API route for login user
 Route::group([
     'prefix' => 'auth'
-
 ], function () {
     Route::post('login', [AuthController::class, 'login']);
     Route::post('logout', [AuthController::class, 'logout']);
@@ -30,12 +29,7 @@ Route::group([
 
 Route::group([
     'middleware' => ['jwt.verify'],
-    
 ], function () {
-    
-    Route::get('profile/{cd_pessoa}', [AuthController::class, 'userProfile']);
-    Route::post('course/new', [CoursesController::class, 'insertImageCourse']);
-    Route::get('all-courses', [CoursesController::class, 'list']);
-    Route::get('course', [CoursesController::class, 'showById']);
+    Route::apiResource('course', CourseController::class);
 });
 
