@@ -18,6 +18,7 @@ class CourseController extends Controller
     {
         $codigo = $request->all();
         $curso = Courses::filter($codigo)->get();
+        // $curso = Courses::connection('mysql2')->filter($codigo)->get();
 
         if (!empty($codigo)) {
             $prof = $codigo['cd_professor'];
@@ -26,7 +27,6 @@ class CourseController extends Controller
             $prof = '';
             $message = "Todos os cursos cadastrados";
         }
-        // dump($codigo);die;
 
         if ($curso->count() == 0) {
             return response()->json([
