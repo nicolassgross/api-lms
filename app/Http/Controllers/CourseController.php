@@ -87,7 +87,7 @@ class CourseController extends Controller
             return response()->json([
                 "success" => false,
                 "message" => 'Curso não encontrado',
-            ], 401);
+            ], 400);
         }
 
         $course->cd_curso;
