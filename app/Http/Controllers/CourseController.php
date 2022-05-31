@@ -18,7 +18,15 @@ class CourseController extends Controller
     {
         $codigo = $request->all();
         $curso = Courses::filter($codigo)->get();
-        $prof = $codigo['cd_professor'];
+
+        if (!empty($codigo)) {
+            $prof = $codigo['cd_professor'];
+            $message = "Cursos cadastrados para o professor $prof";
+        }else{
+            $prof = '';
+            $message = "Todos os cursos cadastrados";
+        }
+        // dump($codigo);die;
 
         if ($curso->count() == 0) {
             return response()->json([
@@ -29,7 +37,7 @@ class CourseController extends Controller
         
         return response()->json([
             'success' => true,
-            'message' => "Cursos cadastrados para o professor com código: $prof",
+            'message' => "$message",
             'data' => $curso
         ], 200);
 
